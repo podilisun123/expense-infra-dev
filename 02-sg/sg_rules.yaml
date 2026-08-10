@@ -1,0 +1,84 @@
+- name: SG rules
+  sg:
+  - expense-dev-db
+  - expense-dev-backend
+  - expense-dev-frontend
+  - expense-dev-bastion
+  - expense-dev-app-alb
+  - expense-dev-vpn 
+  - expense-dev-web-alb
+  db:
+  - name: db_backend
+    desc: db is accepting connections from backend 
+    source: backend
+    port: 3306
+  - name: db_bastion
+    desc: db is accepting connections from bastion 
+    source: bastion
+    port: 3306
+  - name: db_vpn
+    desc: db is accepting connections from vpn 
+    source: vpn
+    port: 3306
+  backend:
+  - name: backend_bastion
+    desc: backend is accepting connections from bastion 
+    source: bastion
+    port: 22
+  - name: backend_app-alb
+    desc: backend is accepting connections from app-alb 
+    source: app-alb
+    port: 8080
+  - name: backend_vpn_ssh
+    desc: backend is accepting connections from vpn 
+    source: vpn
+    port: 22
+  - name: backend_vpn_http
+    desc: backend is accepting connections from vpn 
+    source: vpn
+    port: 8080
+  app-alb:
+  - name: app-alb_bastion
+    desc: app-alb is accepting connections from bastion instance
+    source: bastion
+    port: 80
+  - name: app-alb_vpn
+    desc: app-alb is accepting connections from vpn
+    source: vpn
+    port: 80
+  - name: app-alb_frontend
+    desc: app-alb is accepting connections from frontend instances
+    source: frontend
+    port: 80
+  frontend:
+  - name: frontend_web_alb
+    desc: frontend is accepting connection from web_alb 
+    source: web_alb
+    port: 80
+  - name: frontend_bastion
+    desc: frontend is accepting connection from bastion 
+    source: bastion
+    port: 22
+  - name: frontend_vpn
+    desc: frontend is accepting connections from vpn
+    source: vpn
+    port: 22
+  web_alb:
+  - name: web_alb_public
+    desc: web_alb is accepting connections from public
+    source: public
+    port: 80
+  - name: web_alb_public_https
+    desc: web_alb is accepting connections from public https 
+    source: public
+    port: 443
+  vpn:
+  - name: vpn_public
+    desc: vpn is accepting connections from public
+    source: public
+    port: 943,443,22,1194
+  bastion:
+  - name: bastion_public
+    desc: bastion is acccepting connections from public
+    source: public
+    port: 22
