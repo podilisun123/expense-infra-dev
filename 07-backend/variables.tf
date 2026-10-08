@@ -13,3 +13,9 @@ variable "common_tags" {
         Component = "backend"
     }
 }
+variable "instance_type" {
+    default = "t3.micro"
+}
+variable "zone_name"{
+    default = "jnpndevops.online"
+}

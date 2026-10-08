@@ -66,7 +66,6 @@ module "app_alb" {
     common_tags = var.common_tags
     vpc_id = data.aws_ssm_parameter.vpc_id.value
     sg_name = "app-alb"
-
 }
 # DB is accepting connections from backend
 resource "aws_security_group_rule" "db_backend" {
