@@ -10,7 +10,7 @@ pipeline {
         choice(name: 'CHOICE', choices: ['Apply', 'Destroy'], description: 'Pick anyone')
     }
 
-    stages {
+    /* stages {
         stage('init') {
             steps {
                sh """
@@ -19,7 +19,7 @@ pipeline {
                """
               
             }
-        }
+        } */
         stage('plan') {
             steps {
                 sh 'echo this is test stage'
