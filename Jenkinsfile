@@ -10,16 +10,16 @@ pipeline {
         choice(name: 'CHOICE', choices: ['Apply', 'Destroy'], description: 'Pick anyone')
     }
 
-    /* stages {
-        stage('init') {
-            steps {
-               sh """
-               cd 01-vpc
-               terraform init -reconfigure
-               """
+     stages {
+        // stage('init') {
+        //     steps {
+        //        sh """
+        //        cd 01-vpc
+        //        terraform init -reconfigure
+        //        """
               
-            }
-        } */
+        //     }
+        // } 
         stage('plan') {
             steps {
                 sh 'echo this is test stage'
