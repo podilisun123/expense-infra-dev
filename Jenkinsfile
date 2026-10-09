@@ -14,7 +14,6 @@ pipeline {
         stage('init') {
             steps {
                sh """
-               cd 01-vpc
                ls -ltr
                """
               
